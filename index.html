@@ -43,9 +43,17 @@
   
   // A function that create / update the plot for a given variable:
   function update(selectedVar) {
+    var groupBy = function(xs, key) {
+  return xs.reduce(function(rv, x) {
+    (rv[x[key]] = rv[x[key]] || []).push(x);
+    return rv;
+  }, {});
+};
     d3.csv("IPL20.csv", function(data){
       console.log('yes');
-      console.log(data);
+      var grouped = groupBy(data,'Winning_team');
+      console.log('grped');
+      console.log(grouped);
     })
     // Parse the Data
     d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/barplot_change_data.csv", function(data) {
