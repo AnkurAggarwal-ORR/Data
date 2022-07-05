@@ -44,6 +44,7 @@
   // A function that create / update the plot for a given variable:
   function update(selectedVar) {
     var groupBy = function(xs, key) {
+      console.log('loded');
   return xs.reduce(function(rv, x) {
     (rv[x[key]] = rv[x[key]] || []).push(x);
     return rv;
