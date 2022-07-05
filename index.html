@@ -54,10 +54,13 @@
       console.log('yes');
       var grouped = groupBy(data,'Winning_team');
       console.log('grped');
-      console.log(grouped);
+      console.log(grouped.keys());
+      x.domain(grouped.keys());
+      //x.domain(data.map(function(d) { return d.group; }))
+      xAxis.transition().duration(1000).call(d3.axisBottom(x))
     })
     // Parse the Data
-    d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/barplot_change_data.csv", function(data) {
+    /*d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/barplot_change_data.csv", function(data) {
       //d3.csv("IPL20.csv", function(data) {
   
       // X axis
@@ -84,7 +87,7 @@
           .attr("width", x.bandwidth())
           .attr("height", function(d) { return height - y(d[selectedVar]); })
           .attr("fill", "#69b3a2")
-    })
+    })*/
   
   }
   
