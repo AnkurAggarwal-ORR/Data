@@ -78,13 +78,27 @@
         if(grouped[key].length > maxWinnings)
           maxWinnings = grouped[key].length
       }
-      console.log(teamWinningCount);
-      console.log(maxWinnings);
+
       x.domain(keys);
       //x.domain(data.map(function(d) { return d.group; }))
       xAxis.transition().duration(1000).call(d3.axisBottom(x))
       y.domain([0, maxWinnings ]);
       yAxis.transition().duration(1000).call(d3.axisLeft(y));
+      var u = svg.selectAll("rect")
+        .data(keys)
+  
+      // update bars
+      u
+        .enter()
+        .append("rect")
+        .merge(u)
+        .transition()
+        .duration(1000)
+          .attr("x", function(d) { return x(d); })
+          .attr("y", function(d) { return y(teaWinning[d]); })
+          .attr("width", x.bandwidth())
+          .attr("height", function(d) { return height - y(d[selectedVar]); })
+          .attr("fill", "#69b3a2")
     })
     // Parse the Data
     /*d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/barplot_change_data.csv", function(data) {
