@@ -62,7 +62,7 @@ select.addEventListener('change', function handleChange(event) {
   
     // A function that create / update the plot for a given variable:
     function update(selectedVar) {
-        document.getElementById('my_dataviz').innerHTML = '';
+       
       console.log(selectedVar);
       var groupBy = function(xs, key) {
         return xs.reduce(function(rv, x) {
@@ -94,7 +94,7 @@ select.addEventListener('change', function handleChange(event) {
       else{
         selectedData = groupByYear[selectedVar];
       }
-      console.log(groupByYear);
+      console.log(selectedData);
         
       var filteredData = selectedData.filter((d) => {var winTeam = d['Winning_team'].toLowerCase().trim();var discard = winTeam.includes('match cancelled') || winTeam.includes('match tied')  || winTeam.includes('no result'); return !discard;})
 
