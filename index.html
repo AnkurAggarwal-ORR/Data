@@ -138,6 +138,8 @@ select.addEventListener('change', function handleChange(event) {
       yAxis.transition().duration(1000).call(d3.axisLeft(y));
   
       // variable u: map data to existing bars
+      svg.selectAll("*").remove();
+
       var u = svg.selectAll("rect")
         .data(data)
   
