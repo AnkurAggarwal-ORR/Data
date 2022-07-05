@@ -54,8 +54,10 @@
       console.log('yes');
       var grouped = groupBy(data,'Winning_team');
       console.log('grped');
-      console.log(grouped.keys());
-      x.domain(grouped.keys());
+      for(let frp of grouped){
+        console.log(frp);
+      }
+      //x.domain(grouped.keys());
       //x.domain(data.map(function(d) { return d.group; }))
       xAxis.transition().duration(1000).call(d3.axisBottom(x))
     })
