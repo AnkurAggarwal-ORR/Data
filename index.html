@@ -50,11 +50,15 @@
   }, {});
 };
     d3.csv("IPL20.csv", function(data){
-      console.log('yes');
+      console.log('hello');
       var grouped = groupBy(data,'Winning_team');
       console.log(grouped);
-      console.log(typeof grouped);
-      //x.domain(grouped.keys());
+      var keys = [];
+      for(let key in grouped){
+        keys.push(key);
+      }
+      console.log(keys);
+      x.domain(keys);
       //x.domain(data.map(function(d) { return d.group; }))
       xAxis.transition().duration(1000).call(d3.axisBottom(x))
     })
