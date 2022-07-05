@@ -114,6 +114,7 @@ select.addEventListener('change', function handleChange(event) {
       xAxis.transition().duration(1000).call(d3.axisBottom(x))
       y.domain([0, maxWinnings ]);
       yAxis.transition().duration(1000).call(d3.axisLeft(y));
+      svg.selectAll("rect").remove();
       var u = svg.selectAll("rect")
         .data(keys)
   
