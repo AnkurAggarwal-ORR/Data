@@ -41,14 +41,28 @@
     .attr("class", "myYaxis")
   
   
-  // A function that create / update the plot for a given variable:
-  function update(selectedVar) {
-    var groupBy = function(xs, key) {
-  return xs.reduce(function(rv, x) {
-    (rv[x[key]] = rv[x[key]] || []).push(x);
-    return rv;
-  }, {});
-};
+    // A function that create / update the plot for a given variable:
+    function update(selectedVar) {
+      var groupBy = function(xs, key) {
+        return xs.reduce(function(rv, x) {
+          (rv[x[key]] = rv[x[key]] || []).push(x);
+        return rv;
+      }, {});
+    };
+    let teamAbb = {
+      'Sunrisers Hyderabad': 'S. Hyderabad',
+      'Royal Challengers Bangalore': 'RC Bangalore',
+      'Rajasthan Royals': 'Rajashthan R.',
+      'Pune Warriors': 'Pune W.',
+      'Mumbai Indians': 'Mumbai Ind.',
+      'Kings XI Punjab': 'KXI',
+      'Kochi Tuskers Kerala': 'KT',
+      'Kolkata Knight Riders': 'Kolkata K.R.',
+      'Gujarat Lions': 'GL',
+      'Delhi Daredevils': 'Delhi D.',
+      'Deccan Chargers': 'Deccan C.',
+      'Chennai Super Kings': 'Chennai S.K.'
+    };
     d3.csv("IPL20.csv", function(data){
       console.log('hello');
       var filteredData = data.filter((d) => {var winTeam = d['Winning_team'].toLowerCase().trim();var discard = winTeam.includes('match cancelled') || winTeam.includes('match tied')  || winTeam.includes('no result'); return !discard;})
@@ -57,7 +71,7 @@
       console.log(grouped);
       var keys = [];
       for(let key in grouped){
-        keys.push(key);
+        keys.push(teamAbb[key]);
       }
       console.log(keys);
       x.domain(keys);
