@@ -51,7 +51,7 @@
 };
     d3.csv("IPL20.csv", function(data){
       console.log('hello');
-      
+      data.filter((d) => {console.log(d['Winning_team');return true;})
       var grouped = groupBy(data,'Winning_team');
       console.log(grouped);
       var keys = [];
