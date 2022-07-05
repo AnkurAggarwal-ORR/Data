@@ -51,7 +51,8 @@
 };
     d3.csv("IPL20.csv", function(data){
       console.log('hello');
-      var filteredData = data.filter((d) => {var winTeam = d['Winning_team'].toLowerCase();var discard = winTeam == 'match cancelled' || winTeam == 'match tied'  || winTeam == 'no result'; return !winTeam;})
+      var filteredData = data.filter((d) => {var winTeam = d['Winning_team'].toLowerCase();var discard = winTeam == 'match cancelled' || winTeam == 'match tied'  || winTeam == 'no result'; return !discard;})
+      console.log(filteredData);
       var grouped = groupBy(filteredData,'Winning_team');
       console.log(grouped);
       var keys = [];
