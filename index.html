@@ -63,6 +63,7 @@
       'Deccan Chargers': 'Deccan C.',
       'Chennai Super Kings': 'Chennai S.K.'
     };
+    let teamWinningCount = {};
     d3.csv("IPL20.csv", function(data){
       console.log('hello');
       var filteredData = data.filter((d) => {var winTeam = d['Winning_team'].toLowerCase().trim();var discard = winTeam.includes('match cancelled') || winTeam.includes('match tied')  || winTeam.includes('no result'); return !discard;})
@@ -72,6 +73,7 @@
       var keys = [];
       for(let key in grouped){
         keys.push(teamAbb[key]);
+        teamWinningCount[teamAbb[key]] = grouped[key].length;
       }
       console.log(keys);
       x.domain(keys);
