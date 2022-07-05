@@ -51,7 +51,7 @@
 };
     d3.csv("IPL20.csv", function(data){
       console.log('hello');
-      filteredData = data.filter(d =>  d["Winning_Team] != "No Result")
+      filteredData = data.filter((d) =>  d["Winning_Team] != "No Result")
       var grouped = groupBy(filteredData,'Winning_team');
       console.log(grouped);
       var keys = [];
