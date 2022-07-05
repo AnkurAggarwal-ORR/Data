@@ -48,7 +48,7 @@
   return xs.reduce(function(rv, x) {
     (rv[x[key]] = rv[x[key]] || []).push(x);
     return rv;
-  }, {});
+  }, []);
 };
     d3.csv("IPL20.csv", function(data){
       console.log('yes');
