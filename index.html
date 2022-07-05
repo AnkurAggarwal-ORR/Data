@@ -6,7 +6,7 @@
 
 <!-- Add 2 buttons -->
 <select name="year" id="year-select">
-    <option value="">--Please choose an option--</option>
+    <option value="All">All</option>
     <option value="2008">2008</option>
     <option value="2009">2009</option>
     <option value="2010">2010</option>
@@ -85,12 +85,15 @@ select.addEventListener('change', function handleChange(event) {
     };
     let teamWinningCount = {};
     d3.csv("IPL20.csv", function(data){
-
+      var groupByYear = groupBy(data,'year');
+      if(selectedVar != 'All'){
+        data = groupByYear[selectedVar];
+      }
+      console.log(groupByYear);
+        
       var filteredData = data.filter((d) => {var winTeam = d['Winning_team'].toLowerCase().trim();var discard = winTeam.includes('match cancelled') || winTeam.includes('match tied')  || winTeam.includes('no result'); return !discard;})
 
       var grouped = groupBy(filteredData,'Winning_team');
-      var groupByYear = groupBy(filteredData,'year');
-      console.log(groupByYear);
 
       var keys = [];
       var maxWinnings = 0;
