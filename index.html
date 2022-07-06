@@ -84,7 +84,7 @@ select.addEventListener('change', function handleChange(event) {
       'Deccan Chargers': 'Deccan C.',
       'Chennai Super Kings': 'Chennai S.K.'
     };
-    let teamWinningCount = {};
+    //let teamWinningCount = {};
     d3.csv("IPL20.csv", function(data){
       var groupByYear = groupBy(data,'year');
       var selectedData;
@@ -145,6 +145,7 @@ select.addEventListener('change', function handleChange(event) {
   
   // Initialize plot
   var keys = [];
+    var teamWinningCount = {};
   update('All')
   
   </script>
