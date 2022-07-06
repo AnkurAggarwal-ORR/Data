@@ -103,7 +103,6 @@ function update(selectedVar) {
           if (addKeys)
               keys.push(teamAbb[key]);
           teamWinningCount[teamAbb[key]] = grouped[key].length;
-          console.log(key + ' ' + teamWinningCount[teamAbb[key]]);
           if (grouped[key].length > maxWinnings)
               maxWinnings = grouped[key].length
       }
