@@ -84,7 +84,7 @@ select.addEventListener('change', function handleChange(event) {
       'Deccan Chargers': 'Deccan C.',
       'Chennai Super Kings': 'Chennai S.K.'
     };
-    //let teamWinningCount = {};
+    let teamWinningCount = {};
     d3.csv("IPL20.csv", function(data){
       var groupByYear = groupBy(data,'year');
       var selectedData;
@@ -117,6 +117,10 @@ select.addEventListener('change', function handleChange(event) {
         if(grouped[key].length > maxWinnings)
           maxWinnings = grouped[key].length
       }
+      var color = d3.scale.linear()
+            .domain(0,maxWinnings]
+            .range(['red','green']);
+        
       console.log(teamWinningCount);
       x.domain(keys);
       //x.domain(data.map(function(d) { return d.group; }))
@@ -138,14 +142,13 @@ select.addEventListener('change', function handleChange(event) {
           .attr("y", function(d) { return y(teamWinningCount[d]); })
           .attr("width", x.bandwidth())
           .attr("height", function(d) { return height - y(teamWinningCount[d]); })
-          .attr("fill", "#69b3a2")
+          .attr("fill", function(d) { return color(d); })
     })
   
   }
   
   // Initialize plot
   var keys = [];
-    var teamWinningCount = {};
   update('All')
   
   </script>
