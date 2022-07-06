@@ -1,3 +1,17 @@
+<select name="year" id="year-select">
+   <option value="All">All</option>
+   <option value="2008">2008</option>
+   <option value="2009">2009</option>
+   <option value="2010">2010</option>
+   <option value="2011">2011</option>
+   <option value="2012">2012</option>
+   <option value="2013">2013</option>
+   <option value="2014">2014</option>
+   <option value="2015">2015</option>
+   <option value="2016">2016</option>
+   <option value="2017">2017</option>
+   <option value="2018">2018</option>
+</select>
 <div id="chart" class="chart"></div>
 <script src="https://d3js.org/d3.v4.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
@@ -47,25 +61,34 @@
 
 console.log('starting...');
 
-render();
+render('All');
 
-function render() {
+function render(selectedVar) {
     console.log('in render...');
     let idx = 0;
-
-
-    document.querySelector('#chart').innerHTML = '';
     var groupBy = function(xs, key) {
         return xs.reduce(function(rv, x) {
             (rv[x[key]] = rv[x[key]] || []).push(x);
             return rv;
         }, {});
     };
+	
+
+    document.querySelector('#chart').innerHTML = '';
+
     var json;
     console.log('calling data...');
     d3.csv("IPL20.csv", function(data) {
+	var groupByYear = groupBy(data, 'year');
+	var selectedData;
+	if (selectedVar == 'All') {
+		selectedData = data;
+	} else {
+		selectedData = groupByYear[selectedVar];
+	}
+
         console.log(data);
-        var groupByTossWinner = groupBy(data, 'Toss_winner');
+        var groupByTossWinner = groupBy(selectedData, 'Toss_winner');
         var Children = [];
         for (let tossByTeam in groupByTossWinner) {
             var ChildItem = {};
