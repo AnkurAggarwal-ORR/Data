@@ -117,8 +117,7 @@ select.addEventListener('change', function handleChange(event) {
         if(grouped[key].length > maxWinnings)
           maxWinnings = grouped[key].length
       }
-      var color = d3.scaleLinear()
-            .range(['yellow','red']);
+
         
       console.log(teamWinningCount);
       x.domain(keys);
@@ -141,7 +140,7 @@ select.addEventListener('change', function handleChange(event) {
           .attr("y", function(d) { return y(teamWinningCount[d]); })
           .attr("width", x.bandwidth())
           .attr("height", function(d) { return height - y(teamWinningCount[d]); })
-          .attr("fill", function(d) { return color(d); })
+          .attr("fill", "#69b3a2")
     })
   
   }
