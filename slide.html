@@ -77,10 +77,7 @@ console.log('calling data...');
       json = {
           'children': Children
       };
-      console.log('json - ', json);
-console.log('json child');
-	  console.log(json['children']);
-			   console.log(json.children);
+
   })
 	 console.log('rendering chart...');
 /*var json = {
@@ -99,7 +96,10 @@ console.log('json child');
     {name: 'Gujrat L.', value: 13},
   ]
 }*/
-
+      console.log('json - ', json);
+console.log('json child');
+	  console.log(json['children']);
+			   console.log(json.children);
 const values = json.children.map(d => d.value);
 const min = Math.min.apply(null, values);
 const max = Math.max.apply(null, values);
