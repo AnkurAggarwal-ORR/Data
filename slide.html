@@ -62,8 +62,15 @@
 console.log('starting...');
 
 render('All');
+const select = document.getElementById('year-select');
+select.addEventListener('change', function handleChange(event) {
 
+    render(event.target.value)
+
+});
+	
 function render(selectedVar) {
+	
     console.log('in render...');
     let idx = 0;
     var groupBy = function(xs, key) {
