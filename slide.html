@@ -47,17 +47,12 @@
 </style>
 <script>
 
-
-// setup controls
-const satInput = document.querySelector('#sat');
-const lumInput = document.querySelector('#lum');
-
-
-
+console.log('starting...');
 
 render();
 
 function render() {
+	console.log('in render...');
   let idx = 0;
 
 
@@ -68,11 +63,13 @@ function render() {
           return rv;
       }, {});
   };
-
+console.log('calling data...');
   d3.csv("IPL20.csv", function(data) {
+	  console.log(data);
       var groupByTossWinner = groupBy(data, 'Toss_winner');
 	console.log(groupByTossWinner);
   }
+	 console.log('rendering chart...');
 var json = {
   'children': [
     {name: 'Kolkata K.R', value: 50},
