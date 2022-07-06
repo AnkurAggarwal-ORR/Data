@@ -61,6 +61,7 @@ function render() {
           return rv;
       }, {});
   };
+	var json;
 console.log('calling data...');
   d3.csv("IPL20.csv", function(data) {
 	  console.log(data);
@@ -73,7 +74,7 @@ console.log('calling data...');
           console.log(ChildItem);
           Children.push(ChildItem);
       }
-      var json = {
+      json = {
           'children': Children
       };
       console.log('json - ', json);
