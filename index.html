@@ -118,8 +118,7 @@ select.addEventListener('change', function handleChange(event) {
           maxWinnings = grouped[key].length
       }
       var color = d3.scale.linear()
-            .domain(0,maxWinnings])
-            .range(['red','green']);
+            .range(['yellow','red']);
         
       console.log(teamWinningCount);
       x.domain(keys);
