@@ -70,7 +70,7 @@ function render() {
         for (let tossByTeam in groupByTossWinner) {
             var ChildItem = {};
             ChildItem['name'] = tossByTeam;
-            ChildItem['value'] = groupByTossWinner[tossByTeam].lenth;
+            ChildItem['value'] = groupByTossWinner[tossByTeam].length;
             console.log(ChildItem);
             Children.push(ChildItem);
         }
