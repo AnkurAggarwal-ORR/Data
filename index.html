@@ -100,10 +100,17 @@ select.addEventListener('change', function handleChange(event) {
 
       var grouped = groupBy(filteredData,'Winning_team');
 
-      var keys = [];
+      
       var maxWinnings = 0;
+      var addKeys = true;
+      if(keys.length == 0)
+          addKeys = false;
+      for(let key in teamWinningCount){
+        teamWinningCount[key] = 0;
+      }
       for(let key in grouped){
-        keys.push(teamAbb[key]);
+        if(addKeys)
+            keys.push(teamAbb[key]);
         teamWinningCount[teamAbb[key]] = grouped[key].length;
         if(grouped[key].length > maxWinnings)
           maxWinnings = grouped[key].length
@@ -114,7 +121,7 @@ select.addEventListener('change', function handleChange(event) {
       xAxis.transition().duration(1000).call(d3.axisBottom(x))
       y.domain([0, maxWinnings ]);
       yAxis.transition().duration(1000).call(d3.axisLeft(y));
-      svg.selectAll("rect").remove();
+      //svg.selectAll("rect").remove();
       var u = svg.selectAll("rect")
         .data(keys)
   
@@ -135,6 +142,7 @@ select.addEventListener('change', function handleChange(event) {
   }
   
   // Initialize plot
+  var keys = [];
   update('All')
   
   </script>
