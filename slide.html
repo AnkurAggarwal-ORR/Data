@@ -62,7 +62,17 @@ function render() {
 
 
   document.querySelector('#chart').innerHTML = '';
-  
+   var groupBy = function(xs, key) {
+      return xs.reduce(function(rv, x) {
+          (rv[x[key]] = rv[x[key]] || []).push(x);
+          return rv;
+      }, {});
+  };
+
+  d3.csv("IPL20.csv", function(data) {
+      var groupByTossWinner = groupBy(data, 'Toss_winner');
+	console.log(groupByTossWinner);
+  }
 var json = {
   'children': [
     {name: 'Kolkata K.R', value: 50},
