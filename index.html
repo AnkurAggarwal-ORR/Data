@@ -117,7 +117,7 @@ select.addEventListener('change', function handleChange(event) {
         if(grouped[key].length > maxWinnings)
           maxWinnings = grouped[key].length
       }
-      console.log(keys);
+      console.log(teamWinningCount);
       x.domain(keys);
       //x.domain(data.map(function(d) { return d.group; }))
       xAxis.transition().duration(1000).call(d3.axisBottom(x))
