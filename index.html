@@ -63,96 +63,96 @@ var yAxis = svg.append("g")
 
 // A function that create / update the plot for a given variable:
 function update(selectedVar) {
-      let teamAbb = {
-        'Sunrisers Hyderabad': 'S. Hyderabad',
-        'Royal Challengers Bangalore': 'RC Bangalore',
-        'Rajasthan Royals': 'Rajashthan R.',
-        'Pune Warriors': 'Pune W.',
-        'Mumbai Indians': 'Mumbai Ind.',
-        'Kings XI Punjab': 'KXI Punjab',
-        'Kochi Tuskers Kerala': 'Kochi T.K.',
-        'Kolkata Knight Riders': 'Kolkata K.R.',
-        'Gujarat Lions': 'Gujrat L.',
-        'Delhi Daredevils': 'Delhi D.',
-        'Deccan Chargers': 'Deccan C.',
-        'Chennai Super Kings': 'Chennai S.K.'
-    };
-    var maxWinnings = 0;
-    var addKeys = false;
 
-    var groupBy = function(xs, key) {
-        return xs.reduce(function(rv, x) {
-            (rv[x[key]] = rv[x[key]] || []).push(x);
-            return rv;
-        }, {});
-    };
+  var maxWinnings = 0;
+  var addKeys = false;
 
-    d3.csv("IPL20.csv", function(data) {
-        var groupByYear = groupBy(data, 'year');
-        var selectedData;
-        if (selectedVar == 'All') {
-            selectedData = data;
-        } else {
-            selectedData = groupByYear[selectedVar];
-        }
+  var groupBy = function(xs, key) {
+      return xs.reduce(function(rv, x) {
+          (rv[x[key]] = rv[x[key]] || []).push(x);
+          return rv;
+      }, {});
+  };
 
-        var filteredData = selectedData.filter((d) => {
-            var winTeam = d['Winning_team'].toLowerCase().trim();
-            var discard = winTeam.includes('match cancelled') || winTeam.includes('match tied') || winTeam.includes('no result');
-            return !discard;
-        })
+  d3.csv("IPL20.csv", function(data) {
+      var groupByYear = groupBy(data, 'year');
+      var selectedData;
+      if (selectedVar == 'All') {
+          selectedData = data;
+      } else {
+          selectedData = groupByYear[selectedVar];
+      }
 
-        var grouped = groupBy(filteredData, 'Winning_team');
+      var filteredData = selectedData.filter((d) => {
+          var winTeam = d['Winning_team'].toLowerCase().trim();
+          var discard = winTeam.includes('match cancelled') || winTeam.includes('match tied') || winTeam.includes('no result');
+          return !discard;
+      })
+
+      var grouped = groupBy(filteredData, 'Winning_team');
 
 
 
-        if (keys.length == 0)
-            addKeys = true;
-        for (let key in teamWinningCount) {
-            teamWinningCount[key] = 0;
-        }
+      if (keys.length == 0)
+          addKeys = true;
+      for (let key in teamWinningCount) {
+          teamWinningCount[key] = 0;
+      }
 
-        for (let key in grouped) {
-            if (addKeys)
-                keys.push(teamAbb[key]);
-            teamWinningCount[teamAbb[key]] = grouped[key].length;
-            console.log(key + ' ' + teamWinningCount[teamAbb[key]]);
-            if (grouped[key].length > maxWinnings)
-                maxWinnings = grouped[key].length
-        }
+      for (let key in grouped) {
+          if (addKeys)
+              keys.push(teamAbb[key]);
+          teamWinningCount[teamAbb[key]] = grouped[key].length;
+          console.log(key + ' ' + teamWinningCount[teamAbb[key]]);
+          if (grouped[key].length > maxWinnings)
+              maxWinnings = grouped[key].length
+      }
 
 
-        x.domain(keys);
-        xAxis.transition().duration(1000).call(d3.axisBottom(x))
-        y.domain([0, maxWinnings]);
-        yAxis.transition().duration(1000).call(d3.axisLeft(y));
-        var u = svg.selectAll("rect")
-            .data(keys)
-
-        // update bars
-        u
-            .enter()
-            .append("rect")
-            .merge(u)
-            .transition()
-            .duration(1000)
-            .attr("x", function(d) {
-                return x(d);
-            })
-            .attr("y", function(d) {
-                return y(teamWinningCount[d]);
-            })
-            .attr("width", x.bandwidth())
-            .attr("height", function(d) {
-                return height - y(teamWinningCount[d]);
-            })
-            .attr("fill", "#69b3a2")
-    })
-
+      x.domain(keys);
+      xAxis.transition().duration(1000).call(d3.axisBottom(x))
+      y.domain([0, maxWinnings]);
+      yAxis.transition().duration(1000).call(d3.axisLeft(y));
+      var u = svg.selectAll("rect")
+          .data(keys)
+          
+      // update bars
+      u
+          .enter()
+          .append("rect")
+          .merge(u)
+          .transition()
+          .duration(1000)
+          .attr("x", function(d) {
+              return x(d);
+          })
+          .attr("y", function(d) {
+              return y(teamWinningCount[d]);
+          })
+          .attr("width", x.bandwidth())
+          .attr("height", function(d) {
+              return height - y(teamWinningCount[d]);
+          })
+          .attr("fill", "#69b3a2")
+  })
 }
 
 // Initialize plot
 var keys = [];
 var teamWinningCount = {};
+const teamAbb = {
+  'Sunrisers Hyderabad': 'S. Hyderabad',
+  'Royal Challengers Bangalore': 'RC Bangalore',
+  'Rajasthan Royals': 'Rajashthan R.',
+  'Pune Warriors': 'Pune W.',
+  'Mumbai Indians': 'Mumbai Ind.',
+  'Kings XI Punjab': 'KXI Punjab',
+  'Kochi Tuskers Kerala': 'Kochi T.K.',
+  'Kolkata Knight Riders': 'Kolkata K.R.',
+  'Gujarat Lions': 'Gujrat L.',
+  'Delhi Daredevils': 'Delhi D.',
+  'Deccan Chargers': 'Deccan C.',
+  'Chennai Super Kings': 'Chennai S.K.'
+};
 update('All')
 </script>
