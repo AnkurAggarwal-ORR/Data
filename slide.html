@@ -65,10 +65,21 @@ console.log('calling data...');
   d3.csv("IPL20.csv", function(data) {
 	  console.log(data);
       var groupByTossWinner = groupBy(data, 'Toss_winner');
-	console.log(groupByTossWinner);
+      var Children = [];
+      for (let tossByTeam in groupByTossWinner) {
+          var ChildItem = {};
+          ChildItem['name'] = tossByTeam;
+          ChildItem['value'] = groupByTossWinner[tossByTeam].lenth;
+          console.log(ChildItem);
+          Children.push(ChildItem);
+      }
+      var json = {
+          'children': Children
+      };
+      console.log('json - ', json);
   })
 	 console.log('rendering chart...');
-var json = {
+/*var json = {
   'children': [
     {name: 'Kolkata K.R', value: 50},
     {name: 'Chennai S.K.', value: 42},
@@ -83,7 +94,7 @@ var json = {
     {name: 'S. Hyderabad', value: 13},
     {name: 'Gujrat L.', value: 13},
   ]
-}
+}*/
 
 const values = json.children.map(d => d.value);
 const min = Math.min.apply(null, values);
