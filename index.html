@@ -102,9 +102,9 @@ select.addEventListener('change', function handleChange(event) {
 
       
       var maxWinnings = 0;
-      var addKeys = true;
+      var addKeys = false;
       if(keys.length == 0)
-          addKeys = false;
+          addKeys = true;
       for(let key in teamWinningCount){
         teamWinningCount[key] = 0;
       }
