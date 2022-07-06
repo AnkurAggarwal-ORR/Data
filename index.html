@@ -63,15 +63,7 @@ var yAxis = svg.append("g")
 
 // A function that create / update the plot for a given variable:
 function update(selectedVar) {
-
-    console.log(selectedVar);
-    var groupBy = function(xs, key) {
-        return xs.reduce(function(rv, x) {
-            (rv[x[key]] = rv[x[key]] || []).push(x);
-            return rv;
-        }, {});
-    };
-    let teamAbb = {
+      let teamAbb = {
         'Sunrisers Hyderabad': 'S. Hyderabad',
         'Royal Challengers Bangalore': 'RC Bangalore',
         'Rajasthan Royals': 'Rajashthan R.',
@@ -85,6 +77,15 @@ function update(selectedVar) {
         'Deccan Chargers': 'Deccan C.',
         'Chennai Super Kings': 'Chennai S.K.'
     };
+    var maxWinnings = 0;
+    var addKeys = false;
+
+    var groupBy = function(xs, key) {
+        return xs.reduce(function(rv, x) {
+            (rv[x[key]] = rv[x[key]] || []).push(x);
+            return rv;
+        }, {});
+    };
 
     d3.csv("IPL20.csv", function(data) {
         var groupByYear = groupBy(data, 'year');
@@ -94,7 +95,6 @@ function update(selectedVar) {
         } else {
             selectedData = groupByYear[selectedVar];
         }
-        console.log(selectedData);
 
         var filteredData = selectedData.filter((d) => {
             var winTeam = d['Winning_team'].toLowerCase().trim();
@@ -105,14 +105,13 @@ function update(selectedVar) {
         var grouped = groupBy(filteredData, 'Winning_team');
 
 
-        var maxWinnings = 0;
-        var addKeys = false;
+
         if (keys.length == 0)
             addKeys = true;
         for (let key in teamWinningCount) {
             teamWinningCount[key] = 0;
         }
-        console.log(addKeys);
+
         for (let key in grouped) {
             if (addKeys)
                 keys.push(teamAbb[key]);
@@ -123,13 +122,10 @@ function update(selectedVar) {
         }
 
 
-        console.log(teamWinningCount);
         x.domain(keys);
-        //x.domain(data.map(function(d) { return d.group; }))
         xAxis.transition().duration(1000).call(d3.axisBottom(x))
         y.domain([0, maxWinnings]);
         yAxis.transition().duration(1000).call(d3.axisLeft(y));
-        //svg.selectAll("rect").remove();
         var u = svg.selectAll("rect")
             .data(keys)
 
