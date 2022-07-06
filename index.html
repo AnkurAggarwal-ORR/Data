@@ -108,6 +108,7 @@ select.addEventListener('change', function handleChange(event) {
       for(let key in teamWinningCount){
         teamWinningCount[key] = 0;
       }
+      console.log(addKeys);
       for(let key in grouped){
         if(addKeys)
             keys.push(teamAbb[key]);
@@ -115,7 +116,7 @@ select.addEventListener('change', function handleChange(event) {
         if(grouped[key].length > maxWinnings)
           maxWinnings = grouped[key].length
       }
-
+      console.log(keys);
       x.domain(keys);
       //x.domain(data.map(function(d) { return d.group; }))
       xAxis.transition().duration(1000).call(d3.axisBottom(x))
