@@ -109,12 +109,7 @@ function render(selectedVar) {
         json = {
             'children': Children
         };
-        console.log('rendering chart...');
 
-        console.log('json - ', json);
-        console.log('json child');
-        console.log(json['children']);
-        console.log(json.children);
         const values = json.children.map(d => d.value);
         const min = Math.min.apply(null, values);
         const max = Math.max.apply(null, values);
@@ -181,7 +176,7 @@ function render(selectedVar) {
             .attr("dy", "0.2em")
             .style("text-anchor", "middle")
             .style('font-family', 'Roboto')
-            .style('font-size', getFontSizeForItem)
+            .style('font-size', 5)
             .text(getLabel)
             .style("fill", "#ffffff")
             .style('pointer-events', 'none');
