@@ -164,7 +164,7 @@ function render(selectedVar) {
     
         node.append("circle")
             .attr("r", function(d) {
-                return d.r*2;
+                return d.r;
             })
             .style("fill", getItemColor)
             //.on('mouseover', tip.show)
