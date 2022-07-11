@@ -176,7 +176,7 @@ function render(selectedVar) {
             .attr("dy", "0.2em")
             .style("text-anchor", "middle")
             .style('font-family', 'Roboto')
-            .style('font-size', 5)
+            .style('font-size', 15)
             .text(getLabel)
             .style("fill", "#ffffff")
             .style('pointer-events', 'none');
@@ -213,9 +213,9 @@ function render(selectedVar) {
         }
     
         function getValueText(item) {
-            if (item.data.value < max / 3.3) {
+            /*if (item.data.value < max / 3.3) {
                 return '';
-            }
+            }*/
             return item.data.value;
         }
     
