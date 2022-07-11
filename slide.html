@@ -128,7 +128,7 @@ function render(selectedVar) {
             .size([diameter, diameter])
             .padding(0);
     
-        var tip = d3.tip()
+        /*var tip = d3.tip()
             .attr('class', 'd3-tip-outer')
             .offset([-38, 0])
             .html((d, i) => {
@@ -136,7 +136,7 @@ function render(selectedVar) {
                 const color = getColor(i, values.length);
                 return `<div class="d3-tip" style="background-color: ${color}">${item.name} (${item.value})</div><div class="d3-stem" style="border-color: ${color} transparent transparent transparent"></div>`;
             });
-    
+        */
         var margin = {
             left: 25,
             right: 25,
@@ -175,7 +175,7 @@ function render(selectedVar) {
             .on('mouseover', tip.show)
             .on('mouseout', tip.hide);
     
-        node.call(tip);
+        //node.call(tip);
     
         node.append("text")
             .attr("dy", "0.2em")
