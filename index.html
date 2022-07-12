@@ -129,7 +129,7 @@ function update(selectedVar) {
       var maxwinningX = 0;
       var maxwinningY = 0;
       // update bars
-      await u
+      u
           .enter()
           .append("rect")
           .merge(u)
@@ -174,10 +174,10 @@ function update(selectedVar) {
          annotationG.remove();
       const makeAnnotations = d3.annotation()
       .annotations(annotations)
-      svg
+      setInterval(() => {svg
       .append("g")
       .attr("id","annotationG")
-      .call(makeAnnotations)
+      .call(makeAnnotations)},1000};
   })
 }
 
