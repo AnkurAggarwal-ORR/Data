@@ -174,7 +174,7 @@ function update(selectedVar) {
       const makeAnnotations = d3.annotation()
       .annotations(annotations)
       svg.append("g").attr("id","annotationG")
-      .call(makeAnnotations)},1000);
+      .call(makeAnnotations);
   })
 }
 
