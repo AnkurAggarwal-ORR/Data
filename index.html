@@ -167,8 +167,8 @@ function update(selectedVar) {
       const annotations = [
          {
             note: {
-               label: "Most wins" + (selectedVar == 'All' ? '' : ' in ' + selectedVar) ,
-               title: "Most wins"
+               label: "Most wins" + (selectedVar == ' (Alltime)' ? '' : ' in ' + selectedVar) ,
+               title: ""
             },
             x: maxwinningX,
             y: maxwinningY,
@@ -191,12 +191,12 @@ function update(selectedVar) {
      const Minannotations = [
          {
             note: {
-               label: "Least wins" + (selectedVar == 'All' ? '' : ' in ' + selectedVar) ,
-               title: "Least wins"
+               label: "Least wins" + (selectedVar == 'All' ? ' (Alltime)' : ' in ' + selectedVar) ,
+               title: ""
             },
             x: minwinningX,
             y: minwinningY,
-            dy: -10,
+            dy: 0,
             dx: -10
          }
       ]
