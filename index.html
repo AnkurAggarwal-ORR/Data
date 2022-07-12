@@ -187,6 +187,30 @@ function update(selectedVar) {
       .annotations(annotations)
       svg.append("g").attr("id","annotationG")
       .call(makeAnnotations);
+     
+     const Minannotations = [
+         {
+            note: {
+               label: "Least wins" + (selectedVar == 'All' ? '' : ' in ' + selectedVar) ,
+               title: "Least wins"
+            },
+            x: minwinningX,
+            y: minwinningY,
+            dy: -10,
+            dx: -10
+         }
+      ]
+
+      // Add annotation to the chart
+
+     var annotationGMin = document.getElementById("annotationGMin")
+      if( annotationGMin != null){
+         annotationGMin.remove();
+      }
+      const makeAnnotationsMin = d3.annotation()
+      .annotations(Minannotations)
+      svg.append("g").attr("id","annotationGMin")
+      .call(makeAnnotationsMin);
   })
 }
 
