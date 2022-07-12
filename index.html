@@ -166,10 +166,12 @@ function update(selectedVar) {
       ]
 
       // Add annotation to the chart
+      var annotationG = svg.selectAll("annotationG");
       const makeAnnotations = d3.annotation()
       .annotations(annotations)
       svg
       .append("g")
+      .attr("id","annotationG").merge(annotationG).duration(1000)
       .call(makeAnnotations)
   })
 }
