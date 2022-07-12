@@ -167,8 +167,8 @@ function render(selectedVar) {
                 return d.r;
             })
             .style("fill", getItemColor)
-            //.on('mouseover', tip.show)
-            //.on('mouseout', tip.hide);
+            .on('mouseover', function(d) {console.log('translate(' + d.x + ' ' + d.y + ')')})
+            .on('mouseout', function(d) {console.log('out')});
     
         //node.call(tip);
     
