@@ -146,7 +146,7 @@ function update(selectedVar) {
           .attr("width", x.bandwidth())
           .attr("height", function(d) {
               if(teamWinningCount[d] == maxWinnings){console.log(d);
-                 maxwinningY = height - y(teamWinningCount[d]);}
+                 maxwinningY = y(teamWinningCount[d]);}
               return height - y(teamWinningCount[d]);
           })
           .attr("fill", "#69b3a2")
