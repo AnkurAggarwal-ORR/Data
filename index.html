@@ -134,6 +134,8 @@ function update(selectedVar) {
           .data(keys)
       var maxwinningX = 0;
       var maxwinningY = 0;
+      var minwinningX = 0;
+      var minwinningY = 0;
       // update bars
       u
           .enter()
@@ -142,8 +144,10 @@ function update(selectedVar) {
           .transition()
           .duration(1000)
           .attr("x", function(d) {
-              if(teamWinningCount[d] == maxWinnings){console.log(d);
+              if(teamWinningCount[d] == maxWinnings){
                  maxwinningX = x(d);}
+         if(teamWinningCount[d] == minWinnings){
+                 minwinningX = x(d);}
               return x(d);
           })
           .attr("y", function(d) {
@@ -151,13 +155,15 @@ function update(selectedVar) {
           })
           .attr("width", x.bandwidth())
           .attr("height", function(d) {
-              if(teamWinningCount[d] == maxWinnings){console.log(d);
+              if(teamWinningCount[d] == maxWinnings){
                  maxwinningY = y(teamWinningCount[d]);}
+         if(teamWinningCount[d] == minWinnings){
+                 minwinningY = y(teamWinningCount[d]);}
               return height - y(teamWinningCount[d]);
           })
           .attr("fill", "#69b3a2")
-      console.log(maxwinningX);
-     console.log(maxwinningY);
+      console.log(minwinningX);
+      console.log(minwinningY);
       const annotations = [
          {
             note: {
