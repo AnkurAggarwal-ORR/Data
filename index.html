@@ -170,7 +170,7 @@ function update(selectedVar) {
                label: "" + (selectedVar == 'All' ? 'Most wins' : 'Most wins (' + selectedVar +  ')' ) ,
                title: ""
             },
-            x: maxwinningX,
+            x: maxwinningX + 25,
             y: maxwinningY,
             dy: -10,
             dx: 10
@@ -194,7 +194,7 @@ function update(selectedVar) {
                label: "" + (selectedVar == 'All' ? 'Least wins' : 'Least wins (' + selectedVar +  ')' ) ,
                title: ""
             },
-            x: minwinningX + 10,
+            x: minwinningX + 25,
             y: minwinningY,
             dy: -10,
             dx: 10
