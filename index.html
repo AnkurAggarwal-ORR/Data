@@ -211,6 +211,26 @@ function update(selectedVar) {
       .annotations(Minannotations)
       svg.append("g").attr("id","annotationGMin")
       .call(makeAnnotationsMin);
+     const ChartLabel = [
+         {
+            note: {
+               label: "" + (selectedVar == 'All' ? 'Least wins' : 'Least wins (' + selectedVar +  ')' ) ,
+               title: ""
+            },
+            x: 120,
+            y: 120
+            }
+      ]
+     
+     var annotationGLabel = document.getElementById("annotationGLabel")
+      if( annotationGLabel != null){
+         annotationGLabel.remove();
+      }
+      const makeAnnotationsLabel = d3.annotation()
+      .annotations(ChartLabel)
+      svg.append("g").attr("id","annotationGLabel")
+      .call(makeAnnotationsLabel);
+     
   })
 }
 
