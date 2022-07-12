@@ -169,13 +169,11 @@ function update(selectedVar) {
 
      var annotationG = document.getElementById("annotationG")
       if( annotationG != null){
-         annotationG = svg
-      .append("g").attr("id","annotationG");
-         annotationG.innerHTML = '';
+         annotationG.remove();
       }
       const makeAnnotations = d3.annotation()
       .annotations(annotations)
-      setInterval(() => {      annotationG
+      svg.appen("d").attr("id","annotationG");
       .call(makeAnnotations)},1000);
   })
 }
