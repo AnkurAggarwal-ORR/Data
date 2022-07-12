@@ -166,7 +166,10 @@ function update(selectedVar) {
       ]
 
       // Add annotation to the chart
-      var annotationG = svg.selectAll("annotationG");
+      var annotationG = document.getElementById("annotationG")
+      if( annotationG != null)
+         annotationG.remove()
+     
       if(annotationG != null)
          annotationG.remove();
       const makeAnnotations = d3.annotation()
