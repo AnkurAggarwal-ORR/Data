@@ -136,7 +136,7 @@ function update(selectedVar) {
           .transition()
           .duration(1000)
           .attr("x", function(d) {
-              if(y(teamWinningCount[d]) == maxWinnings){console.log(d);
+              if(teamWinningCount[d] == maxWinnings){console.log(d);
                  maxwinningX = x(d);}
               return x(d);
           })
@@ -145,7 +145,7 @@ function update(selectedVar) {
           })
           .attr("width", x.bandwidth())
           .attr("height", function(d) {
-              if(y(teamWinningCount[d]) == maxWinnings){console.log(d);
+              if(teamWinningCount[d] == maxWinnings){console.log(d);
                  maxwinningY = height - y(teamWinningCount[d]);}
               return height - y(teamWinningCount[d]);
           })
