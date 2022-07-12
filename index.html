@@ -155,8 +155,8 @@ function update(selectedVar) {
       const annotations = [
          {
             note: {
-               label: "Here is the annotation label",
-               title: "Annotation title"
+               label: "Most wins" + (selectedVar == 'All' ? '' , ' in ' + selectedVar ,
+               title: "Most wins"
             },
             x: maxwinningX,
             y: maxwinningY,
