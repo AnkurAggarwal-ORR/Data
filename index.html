@@ -168,8 +168,11 @@ function update(selectedVar) {
       // Add annotation to the chart
 
      var annotationG = document.getElementById("annotationG")
-      if( annotationG != null)
-         annotationG.remove();
+      if( annotationG != null){
+         annotationG = svg
+      .append("g")
+         annotationG.innerHTML = '';
+      }
       const makeAnnotations = d3.annotation()
       .annotations(annotations)
       setInterval(() => {      svg
