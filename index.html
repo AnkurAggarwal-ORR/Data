@@ -167,12 +167,12 @@ function update(selectedVar) {
 
       // Add annotation to the chart
 
-     
+     var annotationG = document.getElementById("annotationG")
+      if( annotationG != null)
+         annotationG.remove();
       const makeAnnotations = d3.annotation()
       .annotations(annotations)
-      setInterval(() => {      var annotationG = document.getElementById("annotationG")
-      if( annotationG != null)
-         annotationG.remove();svg
+      setInterval(() => {      svg
       .append("g")
       .attr("id","annotationG")
       .call(makeAnnotations)},1000);
