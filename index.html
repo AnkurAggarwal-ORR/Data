@@ -165,10 +165,8 @@ const teamAbb = {
   'Deccan Chargers': 'Deccan C.',
   'Chennai Super Kings': 'Chennai S.K.'
 };
-update('All')
-<script>
-
-// Features of the annotation
+update('All');
+   // Features of the annotation
 const annotations = [
   {
     note: {
@@ -188,6 +186,9 @@ const makeAnnotations = d3.annotation()
 d3.select("#example1")
   .append("g")
   .call(makeAnnotations)
+
+<script>
+
 
 
 </script>
