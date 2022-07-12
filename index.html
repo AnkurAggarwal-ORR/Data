@@ -126,7 +126,8 @@ function update(selectedVar) {
       yAxis.transition().duration(1000).call(d3.axisLeft(y));
       var u = svg.selectAll("rect")
           .data(keys)
-          
+      var maxwinningX = 0;
+      var maxwinningY = 0;
       // update bars
       u
           .enter()
@@ -135,6 +136,8 @@ function update(selectedVar) {
           .transition()
           .duration(1000)
           .attr("x", function(d) {
+              if(y(teamWinningCount[d] == maxWinnings)
+                 maxwinningX = x(d);
               return x(d);
           })
           .attr("y", function(d) {
@@ -142,9 +145,30 @@ function update(selectedVar) {
           })
           .attr("width", x.bandwidth())
           .attr("height", function(d) {
+              if(y(teamWinningCount[d] == maxWinnings)
+                 maxwinningY = height - y(teamWinningCount[d]);
               return height - y(teamWinningCount[d]);
           })
           .attr("fill", "#69b3a2")
+      const annotations = [
+         {
+            note: {
+               label: "Here is the annotation label",
+               title: "Annotation title"
+            },
+            x: maxwinningX,
+            y: maxwinningY,
+            dy: -10,
+            dx: -10
+         }
+      ]
+
+      // Add annotation to the chart
+      const makeAnnotations = d3.annotation()
+      .annotations(annotations)
+      svg
+      .append("g")
+      .call(makeAnnotations)
   })
 }
 
@@ -167,24 +191,6 @@ const teamAbb = {
 };
 update('All');
    // Features of the annotation
-const annotations = [
-  {
-    note: {
-      label: "Here is the annotation label",
-      title: "Annotation title"
-    },
-    x: 100,
-    y: 100,
-    dy: 100,
-    dx: 100
-  }
-]
 
-// Add annotation to the chart
-const makeAnnotations = d3.annotation()
-  .annotations(annotations)
-d3.select("#example1")
-  .append("g")
-  .call(makeAnnotations)
 
 </script>
