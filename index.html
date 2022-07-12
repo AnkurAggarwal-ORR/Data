@@ -77,6 +77,7 @@ var yAxis = svg.append("g")
 function update(selectedVar) {
 
   var maxWinnings = 0;
+  var minWinnings = 0;
   var addKeys = false;
 
   var groupBy = function(xs, key) {
@@ -117,9 +118,14 @@ function update(selectedVar) {
           teamWinningCount[teamAbb[key]] = grouped[key].length;
           if (grouped[key].length > maxWinnings)
               maxWinnings = grouped[key].length
+          if(minWinnings == 0)
+             minWinnings = grouped[key].length
+         else if(grouped[key].length < minWinnings && grouped[key].length != 0){
+             minWinnings = grouped[key].length
+         }
       }
 
-
+      console.log(minWinnings);
       x.domain(keys);
       xAxis.transition().duration(1000).call(d3.axisBottom(x))
       y.domain([0, maxWinnings]);
@@ -155,7 +161,7 @@ function update(selectedVar) {
       const annotations = [
          {
             note: {
-               label: "Most wins" + (selectedVar == 'All' ? '' + ' in ' + selectedVar ,
+               label: "Most wins" + (selectedVar == 'All' ? '' + ' in ' + selectedVar) ,
                title: "Most wins"
             },
             x: maxwinningX,
