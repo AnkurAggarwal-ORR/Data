@@ -170,14 +170,12 @@ function update(selectedVar) {
      var annotationG = document.getElementById("annotationG")
       if( annotationG != null){
          annotationG = svg
-      .append("g")
+      .append("g").attr("id","annotationG");
          annotationG.innerHTML = '';
       }
       const makeAnnotations = d3.annotation()
       .annotations(annotations)
-      setInterval(() => {      svg
-      .append("g")
-      .attr("id","annotationG")
+      setInterval(() => {      annotationG
       .call(makeAnnotations)},1000);
   })
 }
