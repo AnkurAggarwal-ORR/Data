@@ -1,0 +1,65 @@
+html, body { 
+  padding: 0;
+  margin: 0;
+}
+
+article {
+  margin: 0 auto;
+  max-width: 50em;
+  padding: 2em 1em 5em;
+  position: relative;
+  overflow-wrap: break-word;
+}
+
+nav {
+  display: block;
+  height: 0;
+  text-align: right;
+}
+
+nav a {
+  font-size: 80%;
+  color: #aaa !important;
+  text-decoration: none !important;
+}
+
+
+pre {
+  padding: 0;
+  line-height: 1.35;
+
+  margin: 0 0 0 40px;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+
+pre {
+  font-size: 14px;
+  font-family: 'PT Mono', monospace;
+}
+
+
+h1, h2, h3 {
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: 700;
+  margin: 1rem 0;
+  letter-spacing: 2px;
+}
+
+h1 {
+  font-size: 130%;
+}
+h2 {
+  font-size: 115%;
+}
+h3 {
+  font-size: 100%;
+}
+
+.chap_num {
+  font-size: 60%;
+  color: #aaa;
+  margin-top: -.7em;
+  display: block;
+}
