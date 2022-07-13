@@ -63,8 +63,8 @@ function render(selectedVar) {
 	}
 	
 	
-	const grpBytossWinners = new Set();
-	const grpByMatchWinners = new Set();
+	const tossWinners = new Set();
+	const MatchWinners = new Set();
 	var filteredData = selectedData.filter((d) => {
 		var winTeam = d['Winning_team'].toLowerCase().trim();
 		var discard = winTeam.includes('match cancelled') || winTeam.includes('match tied') || winTeam.includes('no result');
