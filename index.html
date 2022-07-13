@@ -1,58 +1,18 @@
 <html>
    <link rel="stylesheet" href="project.css">
-   <!-- Load d3.js -->
-<script src="https://d3js.org/d3.v4.js"></script>
-<!-- Load d3-annotation -->
-<script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
-   
-   
    <head></head>
    <body>
       <article>
-         <nav><a href="" title="previous chapter">◀</a>&nbsp;<a href="index.html" title="cover">◆</a>&nbsp;<a href="05_04_curves.html" title="next chapter">▶</a></nav>
-         <h1><span class="chap_num">Chapter 05</span>Radial Lines</h1>
-         <h2><a class="h_ident" id="h_q8VcC/fiH6" href="#h_q8VcC/fiH6" tabindex="-1" role="presentation"></a>Rendering Lines to a Context</h2>
-         <p><a class="p_ident" id="p_zTCdF572bj" href="#p_zTCdF572bj" tabindex="-1" role="presentation"></a>If no argument is passed to <code>lineRadial.<wbr>context</code>, the method returns the current context, which by default is null.  If, however, a context is passed to <code>lineRadial.<wbr>context</code>, the line will be rendered in the context when the line generator is invoked.</p>
-         <pre>var context = d3.select("#demo6").node().getContext("2d");
+         <nav><a href="" >◀</a>&nbsp;<a href="index.html">◆</a>&nbsp;<a href="chart1-html" >▶</a></nav>
+         <h1>Exploring Indian Premier League with Interactive Visualizations</h1>
+         <h2><a class="h_ident"  tabindex="-1" role="presentation">An overview of IPL in the last 11 years, from 2008 to 2018.</h2>
+         <p><a class="p_ident"  tabindex="-1" role="presentation">Created in 2008, , Indian Premier League (IPL) is a professional Twenty 20 (T20) cricket tournament in India. Major Indian cities has teams in the league, which follows a round-robin group and knockout system.
 
-var lineRadial = d3.lineRadial()
-  .angle((d) =&gt; d.angle)
-  .radius((d) =&gt; d.radius)
-  .context(context);
-  <!-- Add 2 buttons -->
-<div class="chart">
-   <select name="year" id="year-select">
-      <option value="All">All</option>
-      <option value="2008">2008</option>
-      <option value="2009">2009</option>
-      <option value="2010">2010</option>
-      <option value="2011">2011</option>
-      <option value="2012">2012</option>
-      <option value="2013">2013</option>
-      <option value="2014">2014</option>
-      <option value="2015">2015</option>
-      <option value="2016">2016</option>
-      <option value="2017">2017</option>
-      <option value="2018">2018</option>
-   </select>
-</div>
-<!-- Create a div where the graph will take place -->
-<div class="chart" id="my_dataviz"></div>
+The IPL data (2008-2018) is being explored utilizing  D3 to complete the visualization.
+
+Zee Entertainment Enterprises funded the establishment of the Indian Cricket League (ICL) in 2007. The first season was supposed to premiere in April 2008 in New Delhi during a "high-profile ceremony."ß</p>
+         <pre>var context = d3.select("#demo6").node().getContext("2d");
 </pre>
       </article>
-   </body>
-   <style>
-   .chart {
-  margin: 0 auto;
-  max-width: 675px;
-  max-height: 675px;
-}
-</style>
-
-
-
-<script>
-
-</script>
-<script src="chart1.js"></script>   
+   </body>  
 </html>
