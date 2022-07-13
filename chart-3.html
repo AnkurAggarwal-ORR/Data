@@ -132,7 +132,7 @@ function render(selectedVar) {
 			console.log(d);
 			const ChartLabel = [{
 				note: {
-					label: d.data.name + 'has won ' + d.data.value + ' tosses',
+					label: d.teamName ,
 					title: ""
 				},
 				connector: {
@@ -142,10 +142,10 @@ function render(selectedVar) {
 					lineType: "horizontal"
 				},
 				color: ["black"],
-				x: d.x,
-				y: d.y,
-				dx: d.r - 5,
-				dy: d.r - 5,
+				x: x(d.tossWon) ,
+				y: y(d.MatchesWon),
+				dx: 20,
+				dy: 20,
 			}]
 
 			var annotationGLabel = document.getElementById("annotationGLabel")
