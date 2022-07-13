@@ -76,11 +76,17 @@ function render(selectedVar) {
 		MatchWinners.add(temp.Winning_team);
     	}
 	var grpBytossWinners = groupBy(filteredData, 'Toss_winner');
+	var finalData = [];
 	console.log(grpBytossWinners);
 	for(let currentTossWinner in grpBytossWinners){
-		console.log(grpBytossWinners[currentTossWinner].length);
-		console.log(groupBy(grpBytossWinners[currentTossWinner], 'Toss_Match_Winner'));
+		var currentData = {};
+		currentData.tossWon = grpBytossWinners[currentTossWinner].length;
+		let currentData = groupBy(grpBytossWinners[currentTossWinner], 'Toss_Match_Winner');
+		currentData.MatchesWonTosswin = currentData.true;
+		currentData.MatchesLostTosswin = currentData.false;
+		finalData.push(currentData);
 	}
+	console.log(finalData);
 
     })
     
