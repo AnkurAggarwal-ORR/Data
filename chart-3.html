@@ -148,12 +148,14 @@ function render(selectedVar) {
 				dy: 20,
 			}]
 
-			var annotationGLabel = document.getElementById("annotationGLabel")
+			var annotationGLabel = document.getElementById('annotationGLabel')
 			if (annotationGLabel != null) {
 				annotationGLabel.remove();
 			}
+			console.log('her annotationGLabel ' + annotationGLabel);
 			const makeAnnotationsLabel = d3.annotation()
 				.annotations(ChartLabel)
+			console.log(makeAnnotationsLabel);
 				svg.append("g").attr("id", "annotationGLabel")
 				.call(makeAnnotationsLabel);
 			d3.select("#annotationGLabel").attr("stroke-width", "3");
