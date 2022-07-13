@@ -61,8 +61,10 @@ function render(selectedVar) {
 	} else {
 		selectedData = groupByYear[selectedVar];
 	}
-	const tossWinners = new Set();
-	const MatchWinners = new Set();
+	
+	
+	const grpBytossWinners = new Set();
+	const grpByMatchWinners = new Set();
 	var filteredData = selectedData.filter((d) => {
 		var winTeam = d['Winning_team'].toLowerCase().trim();
 		var discard = winTeam.includes('match cancelled') || winTeam.includes('match tied') || winTeam.includes('no result');
@@ -74,6 +76,11 @@ function render(selectedVar) {
 		tossWinners.add(temp.Toss_winner);
 		MatchWinners.add(temp.Winning_team);
     	}
+	const grpBytossWinners = groupBy(filteredData, 'Toss_winner');
+	for(let currentTossWinner of grpBytossWinners){
+		console.log(currentTossWinner.length);
+		console.log(groupBy(grpBytossWinners, 'Toss_Match_Winner');)
+	}
 	console.log(tossWinners);
 	console.log(MatchWinners);
 	console.log(selectedData);
