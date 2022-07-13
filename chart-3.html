@@ -5,6 +5,22 @@
 <script src="https://d3js.org/d3.v4.js"></script>
 
 <!-- Create a div where the graph will take place -->
+<div class="chart">
+	<select name="year" id="year-select">
+	   <option value="All">All</option>
+	   <option value="2008">2008</option>
+	   <option value="2009">2009</option>
+	   <option value="2010">2010</option>
+	   <option value="2011">2011</option>
+	   <option value="2012">2012</option>
+	   <option value="2013">2013</option>
+	   <option value="2014">2014</option>
+	   <option value="2015">2015</option>
+	   <option value="2016">2016</option>
+	   <option value="2017">2017</option>
+	   <option value="2018">2018</option>
+	</select>
+</div>
 <div id="my_dataviz"></div>
 
 <script>
@@ -24,8 +40,32 @@ var svg = d3.select("#my_dataviz")
           "translate(" + margin.left + "," + margin.top + ")");
 
 //Read the data
-  d3.csv("IPL20.csv", function(data) {
+const select = document.getElementById('year-select');
+select.addEventListener('change', function handleChange(event) {
+    render(event.target.value)
+});
+    
+function render(selectedVar) {
+    var groupBy = function(xs, key) {
+        return xs.reduce(function(rv, x) {
+            (rv[x[key]] = rv[x[key]] || []).push(x);
+            return rv;
+        }, {});
+    };
+    d3.csv("IPL20.csv", function(data) {
     console.log(data);})
+    var groupByYear = groupBy(data, 'year');
+	var selectedData;
+	if (selectedVar == 'All') {
+		selectedData = data;
+	} else {
+		selectedData = groupByYear[selectedVar];
+	}
+    for(let temp of selectedData){
+        console.log(temp.Toss_winner + ' ' + temp.Winning_team);
+    }
+    //var groupByTossWinner = groupBy(selectedData, 'Toss_winner');
+}
 d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/2_TwoNum.csv", function(data) {
 
   // Add X axis
