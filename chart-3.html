@@ -90,8 +90,8 @@ function render(selectedVar) {
 		currentData.TeamName = currentTossWinner;
 		currentData.MatchesWon = grpByMatchWinners[currentTossWinner].length;
 		
-		currentData.MatchesWonTosswin = grpByWins.true.length != null && grpByWins.true.length > 0 ? grpByWins.true.length :0;
-		currentData.MatchesLostTosswin = grpByWins.false.length != null && grpByWins.false.length > 0 ? grpByWins.false.length :0;
+		currentData.MatchesWonTosswin = grpByWins.true != undefined && grpByWins.true != null && grpByWins.true.length > 0 ? grpByWins.true.length :0;
+		currentData.MatchesLostTosswin = grpByWins.false != undefined && grpByWins.false != null && grpByWins.false.length > 0 ? grpByWins.false.length :0;
 		if(maxTosswins < currentData.tossWon)
 			maxTosswins = currentData.tossWon ;
 		
@@ -122,7 +122,7 @@ function render(selectedVar) {
 		.append("circle")
 		.attr("cx", function (d) { return x(d.tossWon); } )
 		.attr("cy", function (d) { return y(d.MatchesWon); } )
-		.attr("r", 1.5)
+		.attr("r", 15)
 		.style("fill", "#69b3a2");
     })
     
