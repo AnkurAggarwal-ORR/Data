@@ -63,9 +63,15 @@ function render(selectedVar) {
 	}
 	const tossWinners = new Set();
 	const MatchWinners = new Set();
-   	for(let temp of selectedData){
+	var filteredData = temp2.filter((d) => {
+		var winTeam = d['Winning_team'].toLowerCase().trim();
+		var discard = winTeam.includes('match cancelled') || winTeam.includes('match tied') || winTeam.includes('no result');
+		return !discard;
+	})	    
+   	for(let temp of filteredData){
         	console.log(temp.Toss_winner + ' ' + temp.Winning_team);
-		//tossWinners.add(temp.Toss_winner);
+		temp.Toss_Match_Winner = (temp.Toss_winner == temp.Winning_team);
+		tossWinners.add(temp.Toss_winner);
 		MatchWinners.add(temp.Winning_team);
     	}
 	console.log(tossWinners);
