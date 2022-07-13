@@ -90,10 +90,11 @@ function render(selectedVar) {
 		currentData.TeamName = currentTossWinner;
 		currentData.MatchesWon = grpByMatchWinners[currentTossWinner].length;
 		
-		currentData.MatchesWonTosswin = grpByWins.true.length;
+		currentData.MatchesWonTosswin = grpByWins.true.length != null && grpByWins.true.length > 0 ? grpByWins.true.length :0;
+		currentData.MatchesLostTosswin = grpByWins.false.length != null && grpByWins.false.length > 0 ? grpByWins.false.length :0;
 		if(maxTosswins < currentData.tossWon)
 			maxTosswins = currentData.tossWon ;
-		currentData.MatchesLostTosswin = grpByWins.false.length;
+		
 		if(maxMatchWins < currentData.MatchesWonTosswin)
 			maxMatchWins = currentData.MatchesWonTosswin ;
 		finalData.push(currentData);
