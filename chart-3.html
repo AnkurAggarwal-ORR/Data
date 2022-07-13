@@ -71,7 +71,6 @@ function render(selectedVar) {
 		return !discard;
 	})	    
    	for(let temp of filteredData){
-        	console.log(temp.Toss_winner + ' ' + temp.Winning_team);
 		temp.Toss_Match_Winner = (temp.Toss_winner == temp.Winning_team);
 		tossWinners.add(temp.Toss_winner);
 		MatchWinners.add(temp.Winning_team);
@@ -80,11 +79,9 @@ function render(selectedVar) {
 	console.log(grpBytossWinners);
 	for(let currentTossWinner in grpBytossWinners){
 		console.log(grpBytossWinners[currentTossWinner].length);
-		console.log(groupBy(grpBytossWinners, 'Toss_Match_Winner'));
+		console.log(groupBy(grpBytossWinners[currentTossWinner], 'Toss_Match_Winner'));
 	}
-	console.log(tossWinners);
-	console.log(MatchWinners);
-	console.log(selectedData);
+
     })
     
     //var groupByTossWinner = groupBy(selectedData, 'Toss_winner');
