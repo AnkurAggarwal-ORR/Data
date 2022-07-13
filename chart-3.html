@@ -76,6 +76,7 @@ function render(selectedVar) {
 		MatchWinners.add(temp.Winning_team);
     	}
 	var grpBytossWinners = groupBy(filteredData, 'Toss_winner');
+	var grpByMatchWinners = groupBy(filteredData, 'Winning_team');
 	var finalData = [];
 	var maxMatchWins = 0;
 	var maxTosswins = 0;
@@ -86,6 +87,8 @@ function render(selectedVar) {
 		
 		currentData.tossWon = grpBytossWinners[currentTossWinner].length;
 		currentData.TeamName = currentTossWinner;
+		currentData.MatchesWon = grpByMatchWinners[currentTossWinner].length;
+		
 		currentData.MatchesWonTosswin = grpByWins.true.length;
 		if(maxTosswins < currentData.tossWon)
 			maxTosswins = currentData.tossWon ;
@@ -94,7 +97,7 @@ function render(selectedVar) {
 			maxMatchWins = currentData.MatchesWonTosswin ;
 		finalData.push(currentData);
 	}
-	console.log(maxMatchWins);console.log(maxTosswins);
+	
 	var x = d3.scaleLinear()
 		.domain([0, maxTosswins])
 		.range([ 0, width ]);
@@ -112,45 +115,17 @@ function render(selectedVar) {
 	// Add dots
 	svg.append('g')
 		.selectAll("dot")
-		.data(data)
+		.data(finalData)
 		.enter()
 		.append("circle")
-		.attr("cx", function (d) { return x(d.GrLivArea); } )
-		.attr("cy", function (d) { return y(d.SalePrice); } )
+		.attr("cx", function (d) { return x(d.tossWon); } )
+		.attr("cy", function (d) { return y(d.MatchesWon); } )
 		.attr("r", 1.5)
 		.style("fill", "#69b3a2");
     })
     
     //var groupByTossWinner = groupBy(selectedData, 'Toss_winner');
 }
-d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/2_TwoNum.csv", function(data) {
 
-  // Add X axis
-  var x = d3.scaleLinear()
-    .domain([0, 4000])
-    .range([ 0, width ]);
-  svg.append("g")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x));
-
-  // Add Y axis
-  var y = d3.scaleLinear()
-    .domain([0, 500000])
-    .range([ height, 0]);
-  svg.append("g")
-    .call(d3.axisLeft(y));
-
-  // Add dots
-  svg.append('g')
-    .selectAll("dot")
-    .data(data)
-    .enter()
-    .append("circle")
-      .attr("cx", function (d) { return x(d.GrLivArea); } )
-      .attr("cy", function (d) { return y(d.SalePrice); } )
-      .attr("r", 1.5)
-      .style("fill", "#69b3a2")
-
-})
 
 </script>
