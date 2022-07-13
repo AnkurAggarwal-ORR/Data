@@ -180,7 +180,7 @@ function render(selectedVar) {
       points: 3,           // Number of break in the curve
       lineType : "horizontal"
     },
-    color: ["green"],
+    color: ["black"],
             x: d.x,
             y: d.y,
  	    dx: d.r + 10,
@@ -195,10 +195,10 @@ function render(selectedVar) {
       const makeAnnotationsLabel = d3.annotation()
       .annotations(ChartLabel)
       svg.append("g").attr("id","annotationGLabel")
-      .call(makeAnnotationsLabel);})
+      .call(makeAnnotationsLabel);d3.select("#annotationGLabel").attr("stroke-width","3");
+	    d3.select("#annotationGLabel").attr("font-size","20");})
             .on('mouseout', function(d) {console.log('out')});
-    d3.select("#annotationGLabel").attr("stroke-width","3")
-	    d3.select("#annotationGLabel").attr("font-size","20")
+    
         //node.call(tip);
     
         node.append("text")
