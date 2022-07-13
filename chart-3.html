@@ -53,7 +53,7 @@ function render(selectedVar) {
         }, {});
     };
     d3.csv("IPL20.csv", function(data) {
-    	console.log(data);
+    	
 	var groupByYear = groupBy(data, 'year');
 	var selectedData;
 	if (selectedVar == 'All') {
@@ -61,9 +61,16 @@ function render(selectedVar) {
 	} else {
 		selectedData = groupByYear[selectedVar];
 	}
+	const tossWinners = new Set();
+	const MatchWinners = new Set();
    	for(let temp of selectedData){
         	console.log(temp.Toss_winner + ' ' + temp.Winning_team);
-    }
+		//tossWinners.add(temp.Toss_winner);
+		MatchWinners.add(temp.Winning_team);
+    	}
+	console.log(tossWinners);
+	console.log(MatchWinners);
+	console.log(selectedData);
     })
     
     //var groupByTossWinner = groupBy(selectedData, 'Toss_winner');
