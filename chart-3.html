@@ -81,9 +81,9 @@ function render(selectedVar) {
 	for(let currentTossWinner in grpBytossWinners){
 		var currentData = {};
 		currentData.tossWon = grpBytossWinners[currentTossWinner].length;
-		let currentData = groupBy(grpBytossWinners[currentTossWinner], 'Toss_Match_Winner');
-		currentData.MatchesWonTosswin = currentData.true;
-		currentData.MatchesLostTosswin = currentData.false;
+		let grpByWins = groupBy(grpBytossWinners[currentTossWinner], 'Toss_Match_Winner');
+		currentData.MatchesWonTosswin = grpByWins.true;
+		currentData.MatchesLostTosswin = grpByWins.false;
 		finalData.push(currentData);
 	}
 	console.log(finalData);
