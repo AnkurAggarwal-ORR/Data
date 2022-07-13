@@ -30,14 +30,7 @@ var margin = {top: 10, right: 30, bottom: 30, left: 60},
     width = 460 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
-// append the svg object to the body of the page
-var svg = d3.select("#my_dataviz")
-  .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")");
+
 
 //Read the data
 const select = document.getElementById('year-select');
@@ -53,7 +46,15 @@ function render(selectedVar) {
         }, {});
     };
     d3.csv("IPL20.csv", function(data) {
-    	
+    	// append the svg object to the body of the page
+	d3.select("svg").remove();
+	var svg = d3.select("#my_dataviz")
+		.append("svg")
+		.attr("width", width + margin.left + margin.right)
+		.attr("height", height + margin.top + margin.bottom)
+		.append("g")
+		.attr("transform",
+		"translate(" + margin.left + "," + margin.top + ")");
 	var groupByYear = groupBy(data, 'year');
 	var selectedData;
 	if (selectedVar == 'All') {
@@ -127,5 +128,5 @@ function render(selectedVar) {
     //var groupByTossWinner = groupBy(selectedData, 'Toss_winner');
 }
 
-
+render('All');
 </script>
