@@ -77,17 +77,48 @@ function render(selectedVar) {
     	}
 	var grpBytossWinners = groupBy(filteredData, 'Toss_winner');
 	var finalData = [];
+	var maxMatchWins = 0;
+	var maxTosswins = 0;
 	console.log(grpBytossWinners);
 	for(let currentTossWinner in grpBytossWinners){
 		var currentData = {};
-		currentData.tossWon = grpBytossWinners[currentTossWinner].length;
 		let grpByWins = groupBy(grpBytossWinners[currentTossWinner], 'Toss_Match_Winner');
-		currentData.MatchesWonTosswin = grpByWins.true;
-		currentData.MatchesLostTosswin = grpByWins.false;
+		
+		currentData.tossWon = grpBytossWinners[currentTossWinner].length;
+		currentData.TeamName = currentTossWinner;
+		currentData.MatchesWonTosswin = grpByWins.true.length;
+		if(maxTosswins < currentData.tossWon)
+			maxTosswins = currentData.tossWon ;
+		currentData.MatchesLostTosswin = grpByWins.false.length;
+		if(maxMatchWins < currentData.MatchesWonTosswin)
+			maxMatchWins = currentData.MatchesWonTosswin ;
 		finalData.push(currentData);
 	}
-	console.log(finalData);
+	console.log(maxMatchWins);console.log(maxTosswins);
+	var x = d3.scaleLinear()
+		.domain([0, maxTosswins])
+		.range([ 0, width ]);
+	svg.append("g")
+		.attr("transform", "translate(0," + height + ")")
+		.call(d3.axisBottom(x));
 
+	// Add Y axis
+	var y = d3.scaleLinear()
+		.domain([0, maxMatchWins])
+		.range([ height, 0]);
+	svg.append("g")
+		.call(d3.axisLeft(y));
+
+	// Add dots
+	svg.append('g')
+		.selectAll("dot")
+		.data(data)
+		.enter()
+		.append("circle")
+		.attr("cx", function (d) { return x(d.GrLivArea); } )
+		.attr("cy", function (d) { return y(d.SalePrice); } )
+		.attr("r", 1.5)
+		.style("fill", "#69b3a2");
     })
     
     //var groupByTossWinner = groupBy(selectedData, 'Toss_winner');
