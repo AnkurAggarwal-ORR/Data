@@ -53,17 +53,19 @@ function render(selectedVar) {
         }, {});
     };
     d3.csv("IPL20.csv", function(data) {
-    console.log(data);})
-    var groupByYear = groupBy(data, 'year');
+    	console.log(data);
+	var groupByYear = groupBy(data, 'year');
 	var selectedData;
 	if (selectedVar == 'All') {
 		selectedData = data;
 	} else {
 		selectedData = groupByYear[selectedVar];
 	}
-    for(let temp of selectedData){
-        console.log(temp.Toss_winner + ' ' + temp.Winning_team);
+   	for(let temp of selectedData){
+        	console.log(temp.Toss_winner + ' ' + temp.Winning_team);
     }
+    })
+    
     //var groupByTossWinner = groupBy(selectedData, 'Toss_winner');
 }
 d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/2_TwoNum.csv", function(data) {
