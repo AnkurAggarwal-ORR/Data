@@ -99,7 +99,11 @@ function render(selectedVar) {
 			maxMatchWins = currentData.MatchesWon ;
 		finalData.push(currentData);
 	}
+	console.log(maxMatchWins);
+	console.log(maxTosswins);
 	console.log(finalData);
+	    
+	
 	var x = d3.scaleLinear()
 		.domain([0, maxTosswins])
 		.range([ 0, width ]);
@@ -120,8 +124,8 @@ function render(selectedVar) {
 		.data(finalData)
 		.enter()
 		.append("circle")
-		.attr("cx", function (d) { return x(d.tossWon); } )
-		.attr("cy", function (d) { return y(d.MatchesWon); } )
+		.attr("cx", function (d) { console.log(d.TeamName);console.log('x ' + d.tossWon) ;return x(d.tossWon); } )
+		.attr("cy", function (d) { console.log('y ' + d.MatchesWon) ;return y(d.MatchesWon); } )
 		.attr("r", 15)
 		.style("fill", "#69b3a2");
     })
