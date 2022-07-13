@@ -127,7 +127,38 @@ function render(selectedVar) {
 		.attr("cx", function (d) { console.log(d.TeamName);console.log('x ' + d.tossWon) ;return x(d.tossWon); } )
 		.attr("cy", function (d) { console.log('y ' + d.MatchesWon) ;return y(d.MatchesWon); } )
 		.attr("r", 15)
-		.style("fill", "#69b3a2");
+		.style("fill", "#69b3a2")
+		.on('mouseover', function(d) {
+			console.log(d);
+			const ChartLabel = [{
+				note: {
+					label: d.data.name + 'has won ' + d.data.value + ' tosses',
+					title: ""
+				},
+				connector: {
+					end: "arrow", // none, or arrow or dot
+					type: "curve", // Line or curve
+					points: 3, // Number of break in the curve
+					lineType: "horizontal"
+				},
+				color: ["black"],
+				x: d.x,
+				y: d.y,
+				dx: d.r - 5,
+				dy: d.r - 5,
+			}]
+
+			var annotationGLabel = document.getElementById("annotationGLabel")
+			if (annotationGLabel != null) {
+				annotationGLabel.remove();
+			}
+			const makeAnnotationsLabel = d3.annotation()
+				.annotations(ChartLabel)
+				svg.append("g").attr("id", "annotationGLabel")
+				.call(makeAnnotationsLabel);
+			d3.select("#annotationGLabel").attr("stroke-width", "3");
+			d3.select("#annotationGLabel").attr("font-size", "20");
+		})
     })
     
     //var groupByTossWinner = groupBy(selectedData, 'Toss_winner');
