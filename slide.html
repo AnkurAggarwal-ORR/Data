@@ -168,7 +168,7 @@ function render(selectedVar) {
                 return d.r;
             })
             .style("fill", getItemColor)
-            .on('mouseover', function(d) {console.log('translate(' + d.x + ' ' + d.y + ')') ; const ChartLabel = [
+            .on('mouseover', function(d) {console.log(d) ; const ChartLabel = [
          {
             note: {
                label: "# win By Team" ,
@@ -183,8 +183,8 @@ function render(selectedVar) {
     color: ["black"],
             x: d.x,
             y: d.y,
- 	    dx: d.r + 10,
- 	    dy: d.r + 10,
+ 	    dx: d.r - 5,
+ 	    dy: d.r - 5,
             }
       ]
      
@@ -197,7 +197,7 @@ function render(selectedVar) {
       svg.append("g").attr("id","annotationGLabel")
       .call(makeAnnotationsLabel);d3.select("#annotationGLabel").attr("stroke-width","3");
 	    d3.select("#annotationGLabel").attr("font-size","20");})
-            .on('mouseout', function(d) {console.log('out')});
+            //.on('mouseout', function(d) {});
     
         //node.call(tip);
     
