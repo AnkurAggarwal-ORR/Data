@@ -78,8 +78,8 @@ function render(selectedVar) {
     	}
 	var grpBytossWinners = groupBy(filteredData, 'Toss_winner');
 	console.log(grpBytossWinners);
-	for(let currentTossWinner of grpBytossWinners){
-		console.log(currentTossWinner.length);
+	for(let currentTossWinner in grpBytossWinners){
+		console.log(grpBytossWinners[currentTossWinner].length);
 		console.log(groupBy(grpBytossWinners, 'Toss_Match_Winner'));
 	}
 	console.log(tossWinners);
