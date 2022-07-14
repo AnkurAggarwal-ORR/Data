@@ -1,23 +1,45 @@
-<script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
-<link rel="stylesheet" href="project.css">
-<div class="chart">
-	<select name="year" id="year-select">
-	   <option value="All">All</option>
-	   <option value="2008">2008</option>
-	   <option value="2009">2009</option>
-	   <option value="2010">2010</option>
-	   <option value="2011">2011</option>
-	   <option value="2012">2012</option>
-	   <option value="2013">2013</option>
-	   <option value="2014">2014</option>
-	   <option value="2015">2015</option>
-	   <option value="2016">2016</option>
-	   <option value="2017">2017</option>
-	   <option value="2018">2018</option>
-	</select>
-</div>
-<div id="chart" class="chart"></div>
-<script src="https://d3js.org/d3.v4.js"></script>
+<html>
+   <link rel="stylesheet" href="project.css">
+   <!-- Load d3.js -->
+   <script src="https://d3js.org/d3.v4.js"></script>
+   <!-- Load d3-annotation -->
+   <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
+   <head></head>
+   <body>
+      <article>
+         <nav><a href="about" title="previous chapter">◀</a>&nbsp;<a href="index.html" title="cover">◆</a>&nbsp;<a href="chart-2" title="next chapter">▶</a></nav>
+         <h1>Interactive visualizations and analysis</h1>
+         <h2>Who is the most winning IPL Team?</h2>
+         <p>From this rounded bar graphs, we can see that Mumbai Indians and Chennai Super Kings are the most successful teams in the IPL history followed by Kolkata Night Riders. </p>
+         <p>Mumbai Indians won 97 matches, Chennai Super Kings won 90 matches and Kolkata Knight Riders won 86 match from 2008 to 2018.</p>
+         <p>While Kochi and Gujrat are the least successful teams. </p>
+         <p>
+		<div class="chart">
+			<select name="year" id="year-select">
+			   <option value="All">All</option>
+			   <option value="2008">2008</option>
+			   <option value="2009">2009</option>
+			   <option value="2010">2010</option>
+			   <option value="2011">2011</option>
+			   <option value="2012">2012</option>
+			   <option value="2013">2013</option>
+			   <option value="2014">2014</option>
+			   <option value="2015">2015</option>
+			   <option value="2016">2016</option>
+			   <option value="2017">2017</option>
+			   <option value="2018">2018</option>
+			</select>
+		</div>
+		<div id="chart" class="chart"></div>
+         </p>
+      </article>
+   </body>
+   <script src="chart1.js"></script>   
+</html>
+
+
+
+
 
 
 <script src="chart2.js"></script>  
