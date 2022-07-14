@@ -116,7 +116,7 @@ function render(selectedVar) {
 				},
 				color: ["black"],
 				x: x(d.tossWon) ,
-				y: y(d.MatchesWon),
+				y: y(d.MatchesWonTosswin),
 				dx: 20,
 				dy: 20,
 			}]
