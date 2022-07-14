@@ -1,0 +1,18 @@
+<html>
+   <link rel="stylesheet" href="project.css">
+   <head></head>
+   <body>
+      <article>
+         <nav><a href="index" >◀</a>&nbsp;<a href="index.html">◆</a>&nbsp;<a href="chart-1" >▶</a></nav>
+         <h1 style="text-align:center">Thanks</h1>
+          <p style="padding-left:125">
+            The above visualizations were created using d3 and d3-annotations. 
+          </p>
+          <p>
+          In this article, we sought to understand IPL teams, matches and winning pattern through interactive visualizations. I have done the preliminary analysis using this dataset, but a lot more can be achieved.
+         <p>
+            <img src="https://wallpaperaccess.com/full/2302743.jpg" style="max-width: 50em;">
+         </p>
+      </article>
+   </body>  
+</html>
