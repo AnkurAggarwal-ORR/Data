@@ -68,8 +68,8 @@ function render(selectedVar) {
 		if(maxTosswins < currentData.tossWon)
 			maxTosswins = currentData.tossWon ;
 		
-		if(maxMatchWins < currentData.MatchesWon)
-			maxMatchWins = currentData.MatchesWon ;
+		if(maxMatchWins < currentData.MatchesWonTosswin)
+			maxMatchWins = currentData.MatchesWonTosswin ;
 		finalData.push(currentData);
 	}
 	console.log(maxMatchWins);
@@ -97,8 +97,8 @@ function render(selectedVar) {
 		.data(finalData)
 		.enter()
 		.append("circle")
-		.attr("cx", function (d) { console.log(d.TeamName);console.log('x ' + d.MatchesWon) ;return x(d.tossWon); } )
-		.attr("cy", function (d) { console.log('y ' + d.MatchesWon) ;return y(d.MatchesWon); } )
+		.attr("cx", function (d) { return x(d.tossWon); } )
+		.attr("cy", function (d) { return y(d.MatchesWonTosswin); } )
 		.attr("r", 15)
 		.style("fill", "#69b3a2")
 		.on('mouseover', function(d) {
